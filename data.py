@@ -48,7 +48,10 @@ def unpickle(file):
 
 def get_data(file):
     download_and_extract()
-    absFile = os.path.abspath("cifar10_data/cifar-10-batches-py/data_batch_{}".format(file))
+    if isinstance(file, int):
+        absFile = os.path.abspath("cifar10_data/cifar-10-batches-py/data_batch_{}".format(file))
+    else:
+        absFile = os.path.abspath("cifar10_data/cifar-10-batches-py/{}".format(file))
     dict = unpickle(absFile)
     X = np.asarray(dict[b'data'].T).astype("uint8")
     Yraw = np.asarray(dict[b'labels'])
