@@ -54,7 +54,7 @@ saver = tf.train.Saver()
 n_epochs = 50
 batch_size = 500
 
-data.import_data([1, 2, 3, 4], [5])
+data.import_data([1, 2, 3, 4, 5], ['test_batch'])
 
 test_x_batch = data.testing_data[0]
 test_y_batch = get_label(data.testing_data[1])
