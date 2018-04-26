@@ -12,10 +12,13 @@ def parse(file):
             if match:
                 train.append(float(match.group(2)))
                 test.append(float(match.group(3)))
-    plt.plot(test)
-    plt.plot(train)
-    plt.show()
-    print(test)
+    plt.plot(test, label='Testing Accuracy')
+    plt.plot(train, label='Training Accuracy')
+    plt.xlabel('Epoc')
+    plt.ylabel('Accuracy')
+    plt.legend()
+    plt.savefig('graph.png')
+    # plt.show()
 
 if __name__ == "__main__":
     parse(sys.argv[1])
