@@ -30,7 +30,8 @@ with tf.name_scope('dnn'):
     conv_3 = tf.layers.conv2d(pool_2, 128, kernel_size=3, strides=1, padding='same', activation=tf.nn.elu)
     pool_3  =tf.layers.max_pooling2d(conv_3, pool_size=2, strides=2, padding='valid')
     flat = tf.reshape(pool_3, [-1, 4*4*128])
-    logits = tf.layers.dense(flat, n_output, name='outputs')
+    hidden = tf.layers.dense(flat, 1024, name='hidden', activation=tf.nn.elu)
+    logits = tf.layers.dense(hidden, n_output, name='outputs')
 
 with tf.name_scope('loss'):
     xentropy = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=y,
@@ -51,7 +52,7 @@ init = tf.global_variables_initializer()
 saver = tf.train.Saver()
 
 n_epochs = 50
-batch_size = 200
+batch_size = 500
 
 data.import_data([1, 2, 3, 4], [5])
 

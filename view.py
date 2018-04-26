@@ -19,8 +19,8 @@ def main():
     print("X:", x.shape)
     print("Y:", y.shape)
     print("N:", name.shape)
-    for i in range(20):
-        view_image(x,y,name, random.randint(1, 10000))
+    for i in range(1):
+        view_image(x.T,y.T,name, random.randint(1, 10000))
 
 
 if __name__ == "__main__":
