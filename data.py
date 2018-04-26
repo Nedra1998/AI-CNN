@@ -85,7 +85,10 @@ def load_data(batch=1):
         y_data = None
         names = None
         for bat in batch:
-            x, y, na= load_batch(dir_name + "data_batch_{}".format(bat))
+            if isinstance(bat, int):
+                x, y, na= load_batch(dir_name + "data_batch_{}".format(bat))
+            else:
+                x, y, na= load_batch(dir_name + "{}".format(bat))
             if x_data is not None:
                 x_data = np.concatenate((x_data, x), axis=1)
                 y_data = np.concatenate((y_data, y), axis=1)

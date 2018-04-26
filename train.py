@@ -37,7 +37,7 @@ with tf.name_scope('loss'):
                                                               logits=logits)
     loss = tf.reduce_mean(xentropy, name="loss")
 
-learning_rate = 0.01
+learning_rate = 0.001
 
 with tf.name_scope("train"):
     optimizer = tf.train.AdamOptimizer(learning_rate)
